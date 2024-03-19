@@ -1,11 +1,10 @@
-import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-
 import { useTheme } from "@mui/material/styles";
-import OutlinedInput from "@mui/material/OutlinedInput";
+import React, { useState } from "react";
+import { CardSelect } from "./CardSelect";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -18,458 +17,294 @@ const MenuProps = {
   },
 };
 
-// array
-
-const names = [
+// esli
+const arr1 = [
   "состояния больного",
   "состояния человека",
   "у больного",
   "человек",
 ];
 
-
-
-const imgs = [
+// zn1
+const arr2 = [
   "приступ неврологии",
   "является анимия ",
   "бессоница",
   "нервное заболевание",
+  "болезнь страха",
+  "поражена ног",
+  "тяжелая трамва головы",
+  "черепно мозговая трамва",
+  "плохо слышит",
+  "сердечный приступ",
 ];
 
-// array
+// esli
+const arr3 = [
+  "состояния больного",
+  "состояния человека",
+  "у больного",
+  "человек",
+];
+
+// zn1
+const arr4 = [
+  "приступ неврологии",
+  "является анимия ",
+  "бессоница",
+  "нервное заболевание",
+  "болезнь страха",
+  "поражена ног",
+  "тяжелая трамва головы",
+  "черепно мозговая трамва",
+  "плохо слышит",
+  "сердечный приступ",
+];
+
+// esli
+const arr5 = [
+  "состояния больного",
+  "состояния человека",
+  "у больного",
+  "человек",
+];
+
+// zn1
+const arr6 = [
+  "приступ неврологии",
+  "является анимия ",
+  "бессоница",
+  "нервное заболевание",
+  "болезнь страха",
+  "поражена ног",
+  "тяжелая трамва головы",
+  "черепно мозговая трамва",
+  "плохо слышит",
+  "сердечный приступ",
+];
 
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
+      personName === name
+        ? theme.typography.fontWeightMedium
+        : theme.typography.fontWeightRegular,
   };
 }
 
 export const Main = () => {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
-  const [personLife, setPersonLife] = React.useState([]);
-  const [personImg, setPersonImg] = React.useState([]);
-  const [personFull, setPersonFull] = React.useState([]);
-  const [personSelect, setPersonSelect] = React.useState([]);
-  const [personDay, setPersonDay] = React.useState([]);
-  const [personLike, setPersonLike] = React.useState([]);
-  const [personHello, setPersonHello] = React.useState([]);
 
-  //   1
+  const [personName, setPersonName] = React.useState("");
+  const [personImg, setPersonImg] = React.useState("");
 
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+  const [personName1, setPersonName1] = React.useState("");
+  const [personImg1, setPersonImg1] = React.useState("");
+
+  const [personName2, setPersonName2] = React.useState("");
+  const [personImg2, setPersonImg2] = React.useState("");
+
+  const handleChange = (event, setState) => {
+    const { value } = event.target;
+    setState(value);
   };
-
-  //   1
-
-  //   2
-
-  const handleChange1 = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonLife(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
-
-  //   2
-
-  //   3
-
-  const handleChange2 = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonImg(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
-
-  //   3
-
-  //   4
-
-  const handleChange3 = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonFull(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
-
-  //   4
-
-  //   5
-
-  const handleChange4 = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonSelect(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
-
-  //   5
-
-  //   6
-
-  const handleChange5 = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonDay(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
-
-  //   6
-
-  //   7
-
-  const handleChange6 = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonLike(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
-
-  //   7
-
-  //   8
-
-  const handleChange7 = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonHello(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
-
-  //   8
-
   return (
     <>
       <div className="container">
-        {/* 1 */}
-        <div className="flex space-x-6">
-          {/* 1 */}
-          <div className="mt-4">
-            <h2 className="text-2xl">Если</h2>
-          </div>
-          <div>
-            <FormControl sx={{ m: 1, minWidth: 300 }}>
-              <InputLabel id="demo-controlled-open-select-label">
-                Атр
-              </InputLabel>
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                open={open}
-                onClose={handleClose}
-                onOpen={handleOpen}
-                value={personName}
-                onChange={handleChange}
-                label="Age"
-              >
-                {names.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, personName, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
+        <div>
+          <h2 className="mt-10 text-2xl hover:text-blue-500">Фонты</h2>
+          <div className="flex justify-between">
+            {/* atr1 */}
 
-          <div className="mt-4">
-            <h2 className="text-2xl">=</h2>
-          </div>
+            <div>
+              <div className="flex space-x-6 mt-10">
+                <div>
+                  <FormControl>
+                    <InputLabel id="personName-label">Атр</InputLabel>
+                    <Select
+                      labelId="personName-label"
+                      id="personName"
+                      value={personName}
+                      onChange={(event) => handleChange(event, setPersonName)}
+                      MenuProps={MenuProps}
+                      sx={{ width: "200px", background: "white" }}
+                    >
+                      {arr1.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                          style={getStyles(name, personName, theme)}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </div>
 
-          <div>
-            <FormControl sx={{ m: 1, minWidth: 300 }}>
-              <InputLabel id="demo-controlled-open-select-label">
-                Знач
-              </InputLabel>
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                open={open}
-                onClose={handleClose}
-                onOpen={handleOpen}
-                value={personLife}
-                onChange={handleChange1}
-                label="Age"
-              >
-                {imgs.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, personName, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
+                <div className="mt-2">
+                  <h2 className="text-2xl">=</h2>
+                </div>
 
-          {/* 1 */}
-        </div>
+                <div>
+                  <FormControl>
+                    <InputLabel id="personImg-label">Знач</InputLabel>
+                    <Select
+                      labelId="personImg-label"
+                      id="personImg"
+                      value={personImg}
+                      onChange={(event) => handleChange(event, setPersonImg)}
+                      MenuProps={MenuProps}
+                      sx={{ width: "200px", background: "white" }}
+                    >
+                      {arr2.map((img) => (
+                        <MenuItem
+                          key={img}
+                          value={img}
+                          style={getStyles(img, personImg, theme)}
+                        >
+                          {img}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </div>
+              </div>
 
-        {/* 1 */}
+              <div className="ml-40 mt-12">
+                <button className="w-[150px] h-[50px] text-2xl bg-blue-500 border-2 border-blue-600 rounded-xl text-white">
+                  Выбрать
+                </button>
+              </div>
+            </div>
 
-        {/* 2 */}
-        <div className="flex space-x-6">
-          {/* 2 */}
-          <div className="mt-4 ml-8">
-            <h2 className="text-2xl">И</h2>
-          </div>
-          <div>
-            <FormControl sx={{ m: 1, minWidth: 300 }}>
-              <InputLabel id="demo-controlled-open-select-label">
-                Атр
-              </InputLabel>
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                open={open}
-                onClose={handleClose}
-                onOpen={handleOpen}
-                value={personImg}
-                onChange={handleChange2}
-                label="Age"
-              >
-                {names.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, personName, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
+            {/* atr1 */}
 
-          <div className="mt-4">
-            <h2 className="text-2xl">=</h2>
-          </div>
+            {/* atr2 */}
 
-          <div>
-            <FormControl sx={{ m: 1, minWidth: 300 }}>
-              <InputLabel id="demo-controlled-open-select-label">
-                Знач
-              </InputLabel>
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                open={open}
-                onClose={handleClose}
-                onOpen={handleOpen}
-                value={personFull}
-                onChange={handleChange3}
-                label="Age"
-              >
-                {names.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, personName, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+            <div>
+              <div className="ml-40">
+                <button className="w-[150px] h-[50px] text-2xl bg-blue-400 border-2 border-blue-500 rounded-xl text-white">
+                  Вывод
+                </button>
+              </div>
+              <div className="flex space-x-6 mt-10">
+                <div>
+                  <FormControl>
+                    <InputLabel id="personName-label">Атр</InputLabel>
+                    <Select
+                      labelId="personName-label"
+                      id="personName"
+                      value={personName1}
+                      onChange={(event) => handleChange(event, setPersonName1)}
+                      MenuProps={MenuProps}
+                      sx={{ width: "200px", background: "white" }}
+                    >
+                      {arr3.map((name) => (
+                        <MenuItem
+                          key={name}
+                          value={name}
+                          style={getStyles(name, personName1, theme)}
+                        >
+                          {name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </div>
+
+                <div className="mt-2">
+                  <h2 className="text-2xl">=</h2>
+                </div>
+
+                <div>
+                  <FormControl>
+                    <InputLabel id="personImg-label">Знач</InputLabel>
+                    <Select
+                      labelId="personImg-label"
+                      id="personImg"
+                      value={personImg1}
+                      onChange={(event) => handleChange(event, setPersonImg1)}
+                      MenuProps={MenuProps}
+                      sx={{ width: "200px", background: "white" }}
+                    >
+                      {arr4.map((img) => (
+                        <MenuItem
+                          key={img}
+                          value={img}
+                          style={getStyles(img, personImg1, theme)}
+                        >
+                          {img}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </div>
+              </div>
+            </div>
+
+            {/* atr2 */}
           </div>
 
-          {/* 2 */}
-        </div>
-        {/* 2 */}
+          {/* result */}
 
-        {/* 3 */}
-        <div className="flex space-x-6">
-          {/* 3 */}
-          <div className="mt-4 ml-8">
-            <h2 className="text-2xl">И</h2>
+          <div className="w-[300px] h-[80px] rounded-lg bg-blue-200 border border-blue-500 mt-10"></div>
+
+          <h2 className="mt-16 text-2xl hover:text-blue-500">Цель</h2>
+
+          <div className="flex space-x-6 mt-10">
+            <div>
+              <FormControl>
+                <InputLabel id="personName-label">Атр</InputLabel>
+                <Select
+                  labelId="personName-label"
+                  id="personName"
+                  value={personName2}
+                  onChange={(event) => handleChange(event, setPersonName2)}
+                  MenuProps={MenuProps}
+                  sx={{ width: "200px", background: "white" }}
+                >
+                  {arr5.map((name) => (
+                    <MenuItem
+                      key={name}
+                      value={name}
+                      style={getStyles(name, personName2, theme)}
+                    >
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </div>
+
+            <div className="mt-2">
+              <h2 className="text-2xl">=</h2>
+            </div>
+
+            <div>
+              <FormControl>
+                <InputLabel id="personImg-label">Знач</InputLabel>
+                <Select
+                  labelId="personImg-label"
+                  id="personImg"
+                  value={personImg2}
+                  onChange={(event) => handleChange(event, setPersonImg2)}
+                  MenuProps={MenuProps}
+                  sx={{ width: "200px", background: "white" }}
+                >
+                  {arr6.map((img) => (
+                    <MenuItem
+                      key={img}
+                      value={img}
+                      style={getStyles(img, personImg2, theme)}
+                    >
+                      {img}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </div>
           </div>
-          <div>
-            <FormControl sx={{ m: 1, minWidth: 300 }}>
-              <InputLabel id="demo-controlled-open-select-label">
-                Атр
-              </InputLabel>
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                open={open}
-                onClose={handleClose}
-                onOpen={handleOpen}
-                value={personSelect}
-                onChange={handleChange4}
-                label="Age"
-              >
-                {names.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, personName, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
-
-          <div className="mt-4">
-            <h2 className="text-2xl">=</h2>
-          </div>
-
-          <div>
-            <FormControl sx={{ m: 1, minWidth: 300 }}>
-              <InputLabel id="demo-controlled-open-select-label">
-                Знач
-              </InputLabel>
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                open={open}
-                onClose={handleClose}
-                onOpen={handleOpen}
-                value={personDay}
-                onChange={handleChange5}
-                label="Age"
-              >
-                {names.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, personName, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
-
-          {/* 3 */}
-        </div>
-
-        {/* 3 */}
-
-        {/* 4 */}
-        <div className="flex space-x-6 relative right-3">
-          {/* 4 */}
-          <div className="mt-4">
-            <h2 className="text-2xl">Тогда</h2>
-          </div>
-          <div>
-            <FormControl sx={{ m: 1, minWidth: 300 }}>
-              <InputLabel id="demo-controlled-open-select-label">
-                Атр
-              </InputLabel>
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                open={open}
-                onClose={handleClose}
-                onOpen={handleOpen}
-                value={personLike}
-                onChange={handleChange6}
-                label="Age"
-              >
-                {names.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, personName, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
-
-          <div className="mt-4">
-            <h2 className="text-2xl">=</h2>
-          </div>
-
-          <div>
-            <FormControl sx={{ m: 1, minWidth: 300 }}>
-              <InputLabel id="demo-controlled-open-select-label">
-                Знач
-              </InputLabel>
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                open={open}
-                onClose={handleClose}
-                onOpen={handleOpen}
-                value={personHello}
-                onChange={handleChange7}
-                label="Age"
-              >
-                {names.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, personName, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
-
-          {/* 4 */}
-        </div>
-
-        {/* 4 */}
-
-        <div className="mt-10 ml-20">
-          <button className="w-[100px] h-[40px] bg-red-500 text-white rounded-lg ">
-            Сохранить
-          </button>
         </div>
       </div>
     </>
