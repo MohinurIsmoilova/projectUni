@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 
-export const InputForm = () => {
-
-
-
-
-
+export const InputForm = ({ addSentence }) => {
   const [inputValue, setInputValue] = useState(""); // State to manage input value
   const [sentences, setSentences] = useState([]); // State to manage displayed sentences
   const [renameIndex, setRenameIndex] = useState(null); // State to manage index of sentence being renamed
@@ -21,6 +16,12 @@ export const InputForm = () => {
     if (inputValue.trim()) {
       // Check if the input value is not empty or whitespace
       setSentences((prevSentences) => [...prevSentences, inputValue.trim()]); // Add new sentence to the array of sentences
+      setInputValue(""); // Clear the input field
+    }
+
+    if (inputValue.trim()) {
+      // Check if the input value is not empty or whitespace
+      addSentence(inputValue.trim()); // Add new sentence using the addSentence function from props
       setInputValue(""); // Clear the input field
     }
   };

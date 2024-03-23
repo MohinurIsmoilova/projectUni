@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const ValueInput = () => {
+export const ValueInput = ({ addSentences }) => {
   const [inputValue, setInputValue] = useState(""); // State to manage input value
   const [sentences, setSentences] = useState([]); // State to manage displayed sentences
   const [renameIndex, setRenameIndex] = useState(null); // State to manage index of sentence being renamed
@@ -12,10 +12,16 @@ export const ValueInput = () => {
   };
 
   // Function to handle button click
-  const handleButtonClick = () => {
+  const handleButtonClick1 = () => {
     if (inputValue.trim()) {
       // Check if the input value is not empty or whitespace
       setSentences((prevSentences) => [...prevSentences, inputValue.trim()]); // Add new sentence to the array of sentences
+      setInputValue(""); // Clear the input field
+    }
+
+    if (inputValue.trim()) {
+      // Check if the input value is not empty or whitespace
+      addSentences(inputValue.trim()); // Add new sentence using the addSentence function from props
       setInputValue(""); // Clear the input field
     }
   };
@@ -53,7 +59,7 @@ export const ValueInput = () => {
     <>
       <div className="container">
         <div className="mt-16 p-4">
-          <h1 className="text-2xl">Значение</h1>
+          <h1 className="text-2xl">Атрибуты</h1>
 
           <div className="flex space-x-20 mt-6">
             <div>
@@ -70,7 +76,7 @@ export const ValueInput = () => {
               </form>
               <button
                 className="w-[100px] h-[30px] bg-blue-500 text-white rounded-xl mt-5 ml-20"
-                onClick={handleButtonClick} // Handle button click
+                onClick={handleButtonClick1} // Handle button click
               >
                 Click
               </button>

@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { CardSelect } from "./CardSelect";
 import { InputForm } from "./InputForm";
 import { ValueInput } from "./ValueInput";
+import { useEffect } from "react";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -131,6 +132,8 @@ function getStyles(name, personName, theme) {
 }
 
 export const Aside = () => {
+  const [selectedSentence, setSelectedSentence] = useState("");
+
   const theme = useTheme();
 
   const [personName, setPersonName] = React.useState("");
@@ -172,14 +175,29 @@ export const Aside = () => {
     setState(value);
   };
 
+  const [sentences, setSentences] = useState([]);
+
+  const [sentences1, setSentences1] = useState([]);
+
+  // Function to add a new sentence
+  const addSentence = (sentence) => {
+    setSentences([...sentences, sentence]);
+  };
+
+  const addSentences = (sentence) => {
+    setSentences1([...sentences1, sentence]);
+  };
+
   return (
     <>
       <div className="container">
-        
         {/* atr */}
-        <InputForm />
+
+        <InputForm addSentence={addSentence} sentences={sentences} />
+
+        {/* <InputForm sentences={sentences} /> */}
         {/* value */}
-        <ValueInput/>
+        <ValueInput addSentences={addSentences} sentences={sentences} />
 
         <div className="top-10 relative">
           {/* 1 */}
@@ -198,13 +216,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr1.map((name) => (
-                    <MenuItem
-                      key={name}
-                      value={name}
-                      style={getStyles(name, personName, theme)}
-                    >
-                      {name}
+                  {sentences.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -226,13 +240,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr2.map((img) => (
-                    <MenuItem
-                      key={img}
-                      value={img}
-                      style={getStyles(img, personImg, theme)}
-                    >
-                      {img}
+                  {sentences1.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -259,13 +269,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr3.map((name) => (
-                    <MenuItem
-                      key={name}
-                      value={name}
-                      style={getStyles(name, personName1, theme)}
-                    >
-                      {name}
+                  {sentences.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -287,13 +293,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr4.map((img) => (
-                    <MenuItem
-                      key={img}
-                      value={img}
-                      style={getStyles(img, personImg1, theme)}
-                    >
-                      {img}
+                  {sentences1.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -319,13 +321,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr5.map((name) => (
-                    <MenuItem
-                      key={name}
-                      value={name}
-                      style={getStyles(name, personName1, theme)}
-                    >
-                      {name}
+                  {sentences.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -347,13 +345,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr6.map((img) => (
-                    <MenuItem
-                      key={img}
-                      value={img}
-                      style={getStyles(img, personImg2, theme)}
-                    >
-                      {img}
+                  {sentences1.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -379,13 +373,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr7.map((name) => (
-                    <MenuItem
-                      key={name}
-                      value={name}
-                      style={getStyles(name, personName3, theme)}
-                    >
-                      {name}
+                  {sentences.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -407,13 +397,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr8.map((img) => (
-                    <MenuItem
-                      key={img}
-                      value={img}
-                      style={getStyles(img, personImg3, theme)}
-                    >
-                      {img}
+                  {sentences1.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -439,13 +425,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr9.map((name) => (
-                    <MenuItem
-                      key={name}
-                      value={name}
-                      style={getStyles(name, personName4, theme)}
-                    >
-                      {name}
+                  {sentences.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -467,13 +449,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr10.map((img) => (
-                    <MenuItem
-                      key={img}
-                      value={img}
-                      style={getStyles(img, personImg4, theme)}
-                    >
-                      {img}
+                  {sentences1.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -499,13 +477,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr11.map((name) => (
-                    <MenuItem
-                      key={name}
-                      value={name}
-                      style={getStyles(name, personName5, theme)}
-                    >
-                      {name}
+                  {sentences.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -527,13 +501,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr12.map((img) => (
-                    <MenuItem
-                      key={img}
-                      value={img}
-                      style={getStyles(img, personImg5, theme)}
-                    >
-                      {img}
+                  {sentences1.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -559,13 +529,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr13.map((name) => (
-                    <MenuItem
-                      key={name}
-                      value={name}
-                      style={getStyles(name, personName6, theme)}
-                    >
-                      {name}
+                  {sentences.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -587,13 +553,9 @@ export const Aside = () => {
                   MenuProps={MenuProps}
                   sx={{ width: "500px", background: "white" }}
                 >
-                  {arr14.map((img) => (
-                    <MenuItem
-                      key={img}
-                      value={img}
-                      style={getStyles(img, personImg6, theme)}
-                    >
-                      {img}
+                  {sentences1.map((sentence, index) => (
+                    <MenuItem key={index} value={sentence}>
+                      {sentence}
                     </MenuItem>
                   ))}
                 </Select>
@@ -609,7 +571,7 @@ export const Aside = () => {
             </button>
           </div>
 
-          <CardSelect />
+          <CardSelect selectedSentence={selectedSentence} />
         </div>
       </div>
     </>
