@@ -5,6 +5,8 @@ import Select from "@mui/material/Select";
 import { useTheme } from "@mui/material/styles";
 import React, { useState } from "react";
 import { CardSelect } from "./CardSelect";
+import { InputForm } from "./InputForm";
+import { ValueInput } from "./ValueInput";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -173,6 +175,12 @@ export const Aside = () => {
   return (
     <>
       <div className="container">
+        
+        {/* atr */}
+        <InputForm />
+        {/* value */}
+        <ValueInput/>
+
         <div className="top-10 relative">
           {/* 1 */}
           <div className="mt-10 flex space-x-6">

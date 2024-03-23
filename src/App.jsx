@@ -9,6 +9,7 @@ function App() {
     <>
     <div className="container bg-zinc-100">
       <AppBar/>
+      
       <Routes>
         <Route path="/expert" element={<Aside/>}/>
         <Route path="/polzov" element={<Main/>}/>

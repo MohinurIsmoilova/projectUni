@@ -112,7 +112,7 @@ export const Main = () => {
     <>
       <div className="container">
         <div>
-          <h2 className="mt-10 text-2xl hover:text-blue-500">Фонты</h2>
+          <h2 className="mt-10 text-2xl hover:text-blue-500">Факты</h2>
           <div className="flex justify-between">
             {/* atr1 */}
 
