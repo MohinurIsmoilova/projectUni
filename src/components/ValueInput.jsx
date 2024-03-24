@@ -59,7 +59,7 @@ export const ValueInput = ({ addSentences }) => {
     <>
       <div className="container">
         <div className="mt-16 p-4">
-          <h1 className="text-2xl">Атрибуты</h1>
+          <h1 className="text-2xl">Значение</h1>
 
           <div className="flex space-x-20 mt-6">
             <div>

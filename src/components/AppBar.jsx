@@ -5,7 +5,7 @@ export const AppBar = () => {
   return (
     <>
       <div className="container">
-        <div className="pt-10">
+        <div className="pt-10 relative right-4">
           <ul className="flex space-x-5">
             <li>
               <NavLink

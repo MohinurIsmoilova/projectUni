@@ -4,10 +4,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useTheme } from "@mui/material/styles";
 import React, { useState } from "react";
-import { CardSelect } from "./CardSelect";
 import { InputForm } from "./InputForm";
 import { ValueInput } from "./ValueInput";
-import { useEffect } from "react";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -186,6 +184,25 @@ export const Aside = () => {
 
   const addSentences = (sentence) => {
     setSentences1([...sentences1, sentence]);
+  };
+
+  const [selectedSentences, setSelectedSentences] = useState([]);
+
+  // Function to handle saving selected sentences
+  const handleSave = () => {
+    // Combine all selected sentences from different dropdown pairs
+    const allSelectedPairs = [
+      [personName, personImg],
+      [personName1, personImg1],
+      [personName2, personImg2],
+      [personName3, personImg3],
+      [personName4, personImg4],
+      [personName5, personImg5],
+      [personName6, personImg6],
+    ].filter((pair) => pair[0] && pair[1]); // Filter out any undefined or empty values
+
+    // Update the state with the combined selected sentences
+    setSelectedSentences(allSelectedPairs);
   };
 
   return (
@@ -566,12 +583,30 @@ export const Aside = () => {
           {/* 7 */}
 
           <div className="mt-10 ml-20">
-            <button className="w-[100px] h-[40px] bg-blue-500 text-white rounded-lg">
+            <button
+              className="w-[100px] h-[40px] bg-blue-500 text-white rounded-lg"
+              onClick={handleSave}
+            >
               Сохранить
             </button>
           </div>
+          {/* atr */}
 
-          <CardSelect selectedSentence={selectedSentence} />
+          <div className="mt-10 ml-[720px] bg-blue-200 border-2 border-blue-500 rounded-xl p-10">
+            <h2 className="text-blue-600 text-2xl text-center">Базы знаний</h2>
+            {selectedSentences.map((pair, index) => (
+              <p key={index} className="mt-4 text-xl">
+                {index === 0
+                  ? "Если"
+                  : index === selectedSentences.length - 1
+                  ? "Тогда"
+                  : "И"}
+                {" " + pair[0]} = {pair[1]}
+              </p>
+            ))}
+          </div>
+
+          {/* atr */}
         </div>
       </div>
     </>
